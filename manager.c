@@ -20,21 +20,21 @@ int selectDataNo(Products *p[], int count){
 	return no;
 }
 
-void saveScore(Products *s, int count)
+void saveScore(Products *p[], int count)
 {
 	FILE *fp;
 	fp = fopen("score.txt", "wt");
 	for (int i = 0; i <count; i++)
 	{
-	fprintf("%s  %d  %d  %.1f  %d\n", p->prodName, p->weight, p->price, p->rating, p->numOfStars);
+	fprintf(fp, "%s  %d  %d  %.1f  %d\n", p[i]->prodName, p[i]->weight, p[i]->price, p[i]->rating, p[i]->numOfStars);
 	}
 
 	fclose(fp);
 	printf("저장됨!\n");
 }
 
-int loadData(Product *p){
-	int count = 0, i = 0;
+int loadData(Products *p[]){
+	int i = 0;
 	FILE *fp;
 	fp = fopen("score.txt", "r+");
 	for(;i<100;i++)

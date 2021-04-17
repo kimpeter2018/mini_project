@@ -47,21 +47,6 @@ int selectMenu(){
 	return menu;
 }
 
-int deleteProduct(Products *p){
-	int agree;
-	printf("정말로 삭제하시겠습니까?(0:취소 1:수락):");
-	scanf("%d", &agree);
-	getchar();
-	if(agree == 0)
-		return 0;
-	else if(agree == 1){
-		p->weight = -1;
-		p->price = -1;
-		p->rating =-1;
-		p->numOfStars=-1;
-	}
-	printf("삭제되었습니다!\n");
-}
 
 #if 0
 int main(){

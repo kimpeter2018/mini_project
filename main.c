@@ -6,9 +6,9 @@ int main(){
 	int index = 0, count = 0;
 	Products *p[100];
 
-	FILE *fp
+	FILE *fp;
 	if (fopen("score.txt", "r")){
-		count = loadData(slist);
+		count = loadData(p);
 		index = count;
 	}
 	else{
