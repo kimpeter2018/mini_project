@@ -62,6 +62,9 @@ int main(){
 				count--;
 			}
 		}
+		else if(menu == 5){
+			saveScore(p,index);
+		}
 
 	}
 	printf("종료됨!\n");
