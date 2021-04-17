@@ -1,5 +1,6 @@
 #include "product.h"
 #include "manager.h"
+#include <string.h>
 
 void listProducts(Products *p[], int count){
 		printf("상품명 중량 가격 별점 별점개수\n");
@@ -50,6 +51,32 @@ int loadData(Products *p[]){
 	printf("=> 로딩 성공!\n");
 	return i;
 }
+
+int searchData(Products *p[], int count){
+	int scnt = 0;
+	char search[20];
+
+	printf("검색할 이름? ");
+	scanf("%s", search);
+
+	printf("상품명 중량 가격 별점 별점개수\n");
+	printf("==================================\n");
+	
+	for (int i = 0; i < count; i++)
+ 	{
+		if (strstr(p[i]->prodName, search))
+		{
+			printf("%2d. ", i + 1);
+			readProduct(*p[i]);
+			scnt++;
+		}
+	}
+	if (scnt == 0)
+ 		printf("=> 검색된 데이터 없음!");
+	printf("\n");
+}
+
+
 #if 0
 int main(){
 	int menu;
