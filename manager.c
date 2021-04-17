@@ -20,7 +20,7 @@ int selectDataNo(Products *p[], int count){
 	return no;
 }
 
-void saveScore(Products *p[], int count)
+void saveData(Products *p[], int count)
 {
 	FILE *fp;
 	fp = fopen("score.txt", "wt");

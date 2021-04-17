@@ -63,7 +63,7 @@ int main(){
 			}
 		}
 		else if(menu == 5){
-			saveScore(p,index);
+			saveData(p,index);
 		}
 
 	}
