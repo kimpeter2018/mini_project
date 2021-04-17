@@ -52,7 +52,7 @@ int loadData(Products *p[]){
 	return i;
 }
 
-int searchData(Products *p[], int count){
+void searchData(Products *p[], int count){
 	int scnt = 0;
 	char search[20];
 
