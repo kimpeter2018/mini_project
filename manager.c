@@ -20,6 +20,36 @@ int selectDataNo(Products *p[], int count){
 	return no;
 }
 
+void saveScore(Products *s, int count)
+{
+	FILE *fp;
+	fp = fopen("score.txt", "wt");
+	for (int i = 0; i <count; i++)
+	{
+	fprintf("%s  %d  %d  %.1f  %d\n", p.prodName, p.weight, p.price, p.rating, p.numOfStars);
+	}
+
+	fclose(fp);
+	printf("저장됨!\n");
+}
+
+int loadData(Product *p){
+	int count = 0, i = 0;
+	FILE *fp;
+	fp = fopen("score.txt", "r+");
+	for(;i<100;i++)
+	{
+		fscanf(fp, "%s", p[i].prodName);
+		if (feof(fp)) break;
+		fscanf(fp, "%d", &p[i].weight);
+		fscanf(fp, "%d", &p[i].price);
+		fscanf(fp, "%f", &p[i].rating);
+		fscanf(fp, "%d", &p[i].numOfStars);
+	}
+	fclose(fp);
+	printf("=> 로딩 성공!\n");
+	return i;
+}
 #if 0
 int main(){
 	int menu;
