@@ -5,6 +5,18 @@ int main(){
 	int menu;
 	int index = 0, count = 0;
 	Products *p[100];
+
+	FILE *fp
+	if (fopen("score.txt", "r")){
+		count = loadData(slist);
+		index = count;
+	}
+	else{
+		printf("=> 파일 없음\n");
+		fp = fopen("score.txt","w");
+		fclose(fp);
+	}
+
 	while(1)
 	{
 		menu = selectMenu();
@@ -50,6 +62,7 @@ int main(){
 				count--;
 			}
 		}
+
 	}
 	printf("종료됨!\n");
 	return 0;
