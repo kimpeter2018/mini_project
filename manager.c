@@ -26,7 +26,7 @@ void saveScore(Products *s, int count)
 	fp = fopen("score.txt", "wt");
 	for (int i = 0; i <count; i++)
 	{
-	fprintf("%s  %d  %d  %.1f  %d\n", p.prodName, p.weight, p.price, p.rating, p.numOfStars);
+	fprintf("%s  %d  %d  %.1f  %d\n", p->prodName, p->weight, p->price, p->rating, p->numOfStars);
 	}
 
 	fclose(fp);
@@ -39,12 +39,12 @@ int loadData(Product *p){
 	fp = fopen("score.txt", "r+");
 	for(;i<100;i++)
 	{
-		fscanf(fp, "%s", p[i].prodName);
+		fscanf(fp, "%s", p[i]->prodName);
 		if (feof(fp)) break;
-		fscanf(fp, "%d", &p[i].weight);
-		fscanf(fp, "%d", &p[i].price);
-		fscanf(fp, "%f", &p[i].rating);
-		fscanf(fp, "%d", &p[i].numOfStars);
+		fscanf(fp, "%d", &p[i]->weight);
+		fscanf(fp, "%d", &p[i]->price);
+		fscanf(fp, "%f", &p[i]->rating);
+		fscanf(fp, "%d", &p[i]->numOfStars);
 	}
 	fclose(fp);
 	printf("=> 로딩 성공!\n");
