@@ -2,18 +2,18 @@
 #include "manager.h"
 #include <string.h>
 
-void listProducts(Products *p[], int count){
+void listProducts(Products *p, int count){
 		printf("상품명 중량 가격 별점 별점개수\n");
 		printf("==================================\n");
 		for(int i=0;i<count;i++){
-			if(p[i]==NULL) continue;
+			if(p[i].weight==-1) continue;
 			printf("%2d. ", i + 1);
-			readProduct(*p[i]);
+			readProduct(p[i]);
 		}
 		printf("\n");
 }
 
-int selectDataNo(Products *p[], int count){
+int selectDataNo(Products *p, int count){
 	int no;
 	listProducts(p,count);
 	printf("번호는(취소:0)? ");
@@ -21,38 +21,38 @@ int selectDataNo(Products *p[], int count){
 	return no;
 }
 
-void saveData(Products *p[], int count)
+void saveData(Products *p, int count)
 {
 	FILE *fp;
-	fp = fopen("score.txt", "wt");
+	fp = fopen("products.txt", "wt");
 	for (int i = 0; i <count; i++)
 	{
-	fprintf(fp, "%s  %d  %d  %.1f  %d\n", p[i]->prodName, p[i]->weight, p[i]->price, p[i]->rating, p[i]->numOfStars);
+	fprintf(fp, "%s  %d  %d  %.1f  %d\n", p[i].prodName, p[i].weight, p[i].price, p[i].rating, p[i].numOfStars);
 	}
 
 	fclose(fp);
 	printf("저장됨!\n");
 }
 
-int loadData(Products *p[]){
+int loadData(Products *p){
 	int i = 0;
 	FILE *fp;
-	fp = fopen("score.txt", "r+");
+	fp = fopen("products.txt", "r+");
 	for(;i<100;i++)
 	{
-		fscanf(fp, "%s", p[i]->prodName);
+		fscanf(fp, "%s", p[i].prodName);
 		if (feof(fp)) break;
-		fscanf(fp, "%d", &p[i]->weight);
-		fscanf(fp, "%d", &p[i]->price);
-		fscanf(fp, "%f", &p[i]->rating);
-		fscanf(fp, "%d", &p[i]->numOfStars);
+		fscanf(fp, "%d", &p[i].weight);
+		fscanf(fp, "%d", &p[i].price);
+		fscanf(fp, "%f", &p[i].rating);
+		fscanf(fp, "%d", &p[i].numOfStars);
 	}
 	fclose(fp);
 	printf("=> 로딩 성공!\n");
 	return i;
 }
 
-void searchData(Products *p[], int count){
+void searchData(Products *p, int count){
 	int scnt = 0;
 	char search[20];
 
@@ -64,10 +64,10 @@ void searchData(Products *p[], int count){
 	
 	for (int i = 0; i < count; i++)
  	{
-		if (strstr(p[i]->prodName, search))
+		if (strstr(p[i].prodName, search))
 		{
 			printf("%2d. ", i + 1);
-			readProduct(*p[i]);
+			readProduct(p[i]);
 			scnt++;
 		}
 	}

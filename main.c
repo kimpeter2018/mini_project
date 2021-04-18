@@ -4,16 +4,16 @@
 int main(){
 	int menu;
 	int index = 0, count = 0;
-	Products *p[100];
+	Products p[100];
 
 	FILE *fp;
-	if (fopen("score.txt", "r")){
+	if (fopen("products.txt", "r")){
 		count = loadData(p);
 		index = count;
 	}
 	else{
 		printf("=> 파일 없음\n");
-		fp = fopen("score.txt","w");
+		fp = fopen("products.txt","w");
 		fclose(fp);
 	}
 
@@ -24,8 +24,7 @@ int main(){
 			break;
 
 		if(menu == 2){
-			p[index] = (Products *) malloc(sizeof(Products));
-			count+= addProduct(p[index++]);
+			count+= addProduct(&p[index++]);
 			}
 		else if(menu == 1){
 			if(count > 0)
@@ -42,7 +41,7 @@ int main(){
 				printf("취소됨!\n");
 				continue;
 				}
-			updateProduct(p[no-1]);
+			updateProduct(&p[no-1]);
 			}
 		else if(menu == 4)
 		{
@@ -56,10 +55,8 @@ int main(){
 			scanf("%d", &deleteok);
 			if(deleteok ==1)
 			{
-				if(p[no-1])
-					free(p[no-1]);
-				p[no-1] = NULL;
-				count--;
+				if(deleteProduct(&p[no-1]))
+					count--;
 			}
 		}
 		else if(menu == 5){

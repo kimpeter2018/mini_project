@@ -33,6 +33,13 @@ int updateProduct(Products *p){
 	return 1;
 }
 
+int deleteProduct(Products *p){
+	p->weight = -1;
+	p->price = -1;
+	p->rating =-1;
+	p->numOfStars =-1;
+	return 1;
+}
 
 int selectMenu(){
 	int menu;
